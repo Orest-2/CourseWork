@@ -1,5 +1,5 @@
 class Api::V1::AdminsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :auth_user_as_admin
 
   def index
     render json:{
@@ -12,7 +12,7 @@ class Api::V1::AdminsController < ApplicationController
     executor_params = {
       uid:params[:email],
       email:params[:email],
-          password:params[:password], 
+      password:params[:password],
       password_confirmation:params[:password_confirmation],
       is_executor: true
     }
@@ -20,14 +20,14 @@ class Api::V1::AdminsController < ApplicationController
     secretary_params = {
       uid:params[:email],
       email:params[:email],
-      password:params[:password], 
+      password:params[:password],
       password_confirmation:params[:password_confirmation],
       is_secretary: true
     }
 
     if params[:type] == "secretary"
       user = User.create(secretary_params)
-    elsif params[:type] == "executor"            
+    elsif params[:type] == "executor"
       user = User.create(executor_params)
     end
 
@@ -39,8 +39,8 @@ class Api::V1::AdminsController < ApplicationController
   end
 
   def destroy
-    begin 
-      User.find(params[:id]).destroy   
+    begin
+      User.find(params[:id]).destroy
       render json: {msg:"Secsses"}
     rescue => exception
       pp exception

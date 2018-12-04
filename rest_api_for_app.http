@@ -1,0 +1,103 @@
+### Create admin
+POST http://127.0.0.1:3000/api/v1/create_admin HTTP/1.1
+Content-Type: application/json
+
+{
+	"name": "superadmin@mail.com",
+  	"pass": "123123123",
+  	"email": "admin123@test.com"
+}
+
+### Sign up
+POST http://127.0.0.1:3000/auth HTTP/1.1
+Content-Type: application/json
+
+{
+	"email": "customer1@test.com",
+	"password": "costomer123",
+	"password_confirmation": "costomer123"
+}
+
+### Sing in
+POST http://127.0.0.1:3000/auth/sign_in HTTP/1.1
+Content-Type: application/json
+
+{
+  	//"email": "admin123@test.com",
+  	//"password": "e17a2606837bdd9c"
+	"email": "customer1@test.com",
+	"password": "costomer123"
+}
+
+### Sing out
+DELETE http://127.0.0.1:3000/auth/sign_out HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: iNDCjSW0Tv1xz-yxpMUShg
+token-type: Bearer
+client: 7wQkb1Zy4KUvUV0omiJtOw
+expiry: 1545145614
+uid: customer1@test.com
+
+### Get secretaries and executers which belong to this user
+GET http://127.0.0.1:3000/api/v1/admin_index HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: iNDCjSW0Tv1xz-yxpMUShg
+token-type: Bearer
+client: 7wQkb1Zy4KUvUV0omiJtOw
+expiry: 1545145614
+uid: customer1@test.com
+
+### Show all products
+GET http://127.0.0.1:3000/api/v1/products HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: iNDCjSW0Tv1xz-yxpMUShg
+token-type: Bearer
+client: 7wQkb1Zy4KUvUV0omiJtOw
+expiry: 1545145614
+uid: customer1@test.com
+
+### Show one products
+GET http://127.0.0.1:3000/api/v1/products/5 HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: iNDCjSW0Tv1xz-yxpMUShg
+token-type: Bearer
+client: 7wQkb1Zy4KUvUV0omiJtOw
+expiry: 1545145614
+uid: customer1@test.com
+
+### Add product
+POST http://127.0.0.1:3000/api/v1/products HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: iNDCjSW0Tv1xz-yxpMUShg
+token-type: Bearer
+client: 7wQkb1Zy4KUvUV0omiJtOw
+expiry: 1545145614
+uid: customer1@test.com
+
+{
+	"name": "qwer",
+	"description": "test test 3"
+}
+
+### Edit product
+PUT http://127.0.0.1:3000/api/v1/products/4 HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: iNDCjSW0Tv1xz-yxpMUShg
+token-type: Bearer
+client: 7wQkb1Zy4KUvUV0omiJtOw
+expiry: 1545145614
+uid: customer1@test.com
+
+{
+	"name": "dfgert",
+	"description": "wertyu"
+}
+
+### Remove product
+DELETE http://127.0.0.1:3000/api/v1/products/2 HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: iNDCjSW0Tv1xz-yxpMUShg
+token-type: Bearer
+client: 7wQkb1Zy4KUvUV0omiJtOw
+expiry: 1545145614
+uid: customer1@test.com
