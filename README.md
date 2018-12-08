@@ -1,24 +1,28 @@
-# README
+Сервіс по захисту авторських прав. Цей сервіс надає інструмент для полегшення пошуку піратьских копій в інтернеті.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Функціонал для адмінастраторів сайту
 
-Things you may want to cover:
+- Створення аккаунта деректора.
 
-* Ruby version
+Функціонал для закажчика
 
-* System dependencies
+- Закажчик може реєструватися.
+- Закжчик реструє свій продукт.
+- Подає заяву на перевірку аторських прав конкретного продукту.
 
-* Configuration
+Функціонал директора
 
-* Database creation
+- Створення, видалення, редагування, аккаунтів секретаря, та виконавця.
+- Прийняття заявок, розподіл її між виконавцями.
 
-* Database initialization
+Функціонал для секретаря
 
-* How to run the test suite
+- Прийняття заявок, розподіл її між виконавцями.
 
-* Services (job queues, cache servers, search engines, etc.)
+Функіонал для виконавця
 
-* Deployment instructions
+- Перегляд заявок по фільтрам.
 
-* ...
+
+
+- 
