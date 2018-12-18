@@ -9,26 +9,17 @@ class Api::V1::AdminsController < ApplicationController
   end
 
   def create
-    executor_params = {
+    account_params = {
       uid:params[:email],
       email:params[:email],
       password:params[:password],
       password_confirmation:params[:password_confirmation],
-      is_executor: true
-    }
-
-    secretary_params = {
-      uid:params[:email],
-      email:params[:email],
-      password:params[:password],
-      password_confirmation:params[:password_confirmation],
-      is_secretary: true
     }
 
     if params[:type] == "secretary"
-      user = User.create(secretary_params)
+      user = User.create(account_params.merge(is_secretary: true))
     elsif params[:type] == "executor"
-      user = User.create(executor_params)
+      user = User.create(account_params.merge(is_executor: true))
     end
 
     if user.errors.blank?
@@ -47,5 +38,4 @@ class Api::V1::AdminsController < ApplicationController
       render json: {msg:exception}
     end
   end
-
 end

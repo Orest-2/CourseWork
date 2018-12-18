@@ -4,8 +4,23 @@ Content-Type: application/json
 
 {
 	"name": "superadmin@mail.com",
-  	"pass": "123123123",
-  	"email": "admin123@test.com"
+  "pass": "123123123",
+  "email": "admin123@test.com"
+}
+
+### Add account Secretary or Executor
+POST http://127.0.0.1:3000/api/v1/admin_create_acount HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: q8I5_cq_2QjVz3vWDdV7qA
+token-type: Bearer
+client: ARwPPrT8cORP4YfJMKcXBQ
+expiry: 1546276229
+uid: admin123@test.com
+
+{
+	"type": "executor",
+	"password": "123123123",
+	"email": "executor2@test.com"
 }
 
 ### Sign up
@@ -23,20 +38,18 @@ POST http://127.0.0.1:3000/auth/sign_in HTTP/1.1
 Content-Type: application/json
 
 {
-  	//"email": "admin123@test.com",
-  	//"password": "e17a2606837bdd9c"
-	"email": "customer1@test.com",
-	"password": "costomer123"
+  "email": "admin123@test.com",
+  "password": "eb0083e7e871764e"
 }
 
 ### Sing out
 DELETE http://127.0.0.1:3000/auth/sign_out HTTP/1.1
 Content-Type: application/json; charset=utf-8
-access-token: iNDCjSW0Tv1xz-yxpMUShg
+access-token: 8ptLDyH8FnMCSOp7bcAiKw
 token-type: Bearer
-client: 7wQkb1Zy4KUvUV0omiJtOw
-expiry: 1545145614
-uid: customer1@test.com
+client: ikhXz1Yj7zHhBxgEeXAfcg
+expiry: 1546275580
+uid: admin123@test.com
 
 ### Get secretaries and executers which belong to this user
 GET http://127.0.0.1:3000/api/v1/admin_index HTTP/1.1
