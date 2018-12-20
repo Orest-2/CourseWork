@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 
+  acceptor_id: 1
+  executor_id: 1
+  product_id: 1
+  title: MyString
+  keyword: MyString
+  price: 
+
+two:
+  customer_id: 
+  acceptor_id: 1
+  executor_id: 1
+  product_id: 1
+  title: MyString
+  keyword: MyString
+  price: 

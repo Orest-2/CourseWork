@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post 'admin_create_acount', to: 'admins#create'
       get 'admin_destroy_acount', to: 'admins#destroy'
       resources :products
+      resources :applications
     end
   end
 end

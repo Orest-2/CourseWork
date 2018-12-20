@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_135935) do
+ActiveRecord::Schema.define(version: 2018_12_18_072859) do
+
+  create_table "applications", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "acceptor_id"
+    t.integer "executor_id"
+    t.integer "product_id"
+    t.string "title"
+    t.string "keyword"
+    t.string "status", default: "created"
+    t.boolean "is_paid", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.integer "user_id"

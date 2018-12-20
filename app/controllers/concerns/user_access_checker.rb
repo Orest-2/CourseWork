@@ -40,6 +40,9 @@ module UserAccessChecker
   end
 
   def not_sing_in(role)
-    render json: { msg: "Please sing in as #{role}" }
+    render json: {
+      success: false,
+      msg: "Please sing in as #{role}"
+    }
   end
 end
