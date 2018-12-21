@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post 'create_admin', to: 'super_admin#create_admin'
       get 'admin_index', to: 'admins#index'
       post 'admin_create_acount', to: 'admins#create'
-      get 'admin_destroy_acount', to: 'admins#destroy'
+      delete 'admin_destroy_acount/:id', to: 'admins#destroy'
       resources :products
       resources :applications
     end

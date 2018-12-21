@@ -3,11 +3,11 @@ module UserAccessChecker
 
   included do
     before_action :authenticate_user!, only:
-    [
-      :auth_user_as_admin,
-      :auth_user_as_executor,
-      :auth_user_as_customer,
-      :auth_user_as_secretary
+    %i[
+      auth_user_as_admin
+      auth_user_as_executor
+      auth_user_as_customer
+      auth_user_as_secretary
     ]
   end
 

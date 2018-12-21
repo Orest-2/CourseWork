@@ -23,30 +23,67 @@ POST http://127.0.0.1:3000/auth/sign_in HTTP/1.1
 Content-Type: application/json
 
 {
-  	//"email": "admin123@test.com",
-  	//"password": "e17a2606837bdd9c"
-	"email": "customer1@test.com",
-	"password": "costomer123"
+  	"email": "admin123@test.com",
+  	"password": "1e1b727d8b62bb75"
+	//"email": "customer1@test.com",
+	//"password": "costomer123"
 }
 
 ### Sing out
 DELETE http://127.0.0.1:3000/auth/sign_out HTTP/1.1
 Content-Type: application/json; charset=utf-8
-access-token: mkLNjRNaSJ7yDfCVSVBHQQ
+access-token: AO2ySkxnuHubmKzzGsIs3A
 token-type: Bearer
-client: HlQeSB4s1x-y_d-kcWj-ag
-expiry: 1546514394
-uid: customer1@test.com
+client: WdH0C4Kq8InR1tc-V9he_Q
+expiry: 1546531179
+uid: admin123@test.com
 
-### Get secretaries and executers which belong to this user
+### ADMIN CONTROLLER ###
+
+### Get secretaries and executers which belong to admin
 GET http://127.0.0.1:3000/api/v1/admin_index HTTP/1.1
 Content-Type: application/json; charset=utf-8
-access-token: iNDCjSW0Tv1xz-yxpMUShg
+access-token: AO2ySkxnuHubmKzzGsIs3A
 token-type: Bearer
-client: 7wQkb1Zy4KUvUV0omiJtOw
-expiry: 1545145614
-uid: customer1@test.com
+client: WdH0C4Kq8InR1tc-V9he_Q
+expiry: 1546531179
+uid: admin123@test.com
 
+
+### Create executors
+POST http://127.0.0.1:3000/api/v1/admin_create_acount HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: AO2ySkxnuHubmKzzGsIs3A
+token-type: Bearer
+client: WdH0C4Kq8InR1tc-V9he_Q
+expiry: 1546531179
+uid: admin123@test.com
+
+{
+	"email": "execotor@test.com",
+	"password": "executor123",
+	"password_confirmation": "executor123",
+	"type": "executor"
+}
+
+### Create secretaris
+POST http://127.0.0.1:3000/api/v1/admin_create_acount HTTP/1.1
+Content-Type: application/json; charset=utf-8
+access-token: AO2ySkxnuHubmKzzGsIs3A
+token-type: Bearer
+client: WdH0C4Kq8InR1tc-V9he_Q
+expiry: 1546531179
+uid: admin123@test.com
+
+{
+	"email": "secretary@test.com",
+	"password": "secretary123",
+	"password_confirmation": "secretary123",
+	"type": "secretary"
+}
+
+### Delete user
+DELETE http://127.0.0.1:3000/api/v1/admin_destroy_acount/ HTTP/1.1
 
 ### PRODUCTS ###
 
