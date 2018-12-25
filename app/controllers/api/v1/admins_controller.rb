@@ -21,6 +21,7 @@ class Api::V1::AdminsController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy if user.belong_to == current_user.id
+
     render json: { msg: 'Secsses' }
   rescue ActiveRecord::RecordNotFound => exception
     render json: { msg: exception }

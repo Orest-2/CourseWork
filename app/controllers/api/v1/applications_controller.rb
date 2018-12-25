@@ -4,7 +4,7 @@ class Api::V1::ApplicationsController < ApplicationController
 
   def index
     render json: {
-      applications: Application.where(customer_id: current_user.id)
+      applications: CopyrightApplication.where(customer_id: current_user.id)
     }
   end
 
@@ -12,7 +12,7 @@ class Api::V1::ApplicationsController < ApplicationController
     return unless product_exist?
 
     params[:application][:customer_id] = current_user.id
-    application = Application.create(application_params)
+    application = CopyrightApplication.create(application_params)
 
     if application.save
       index
@@ -28,6 +28,7 @@ class Api::V1::ApplicationsController < ApplicationController
     return unless application
 
     params[:application].delete :product_id
+    params[:application].delete :customer_id
 
     if application.update(application_params)
       index
@@ -46,7 +47,7 @@ class Api::V1::ApplicationsController < ApplicationController
   private
 
   def application_find
-    Application.find(params[:id])
+    CopyrightApplication.find(params[:id])
   rescue ActiveRecord::RecordNotFound => e
     @errors = e.message
     render_error
@@ -74,6 +75,6 @@ class Api::V1::ApplicationsController < ApplicationController
 
   def application_params
     params.require(:application)
-          .permit(:title, :keyword, :product_id)
+          .permit(:customer_id, :title, :keywords, :product_id)
   end
 end

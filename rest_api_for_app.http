@@ -14,8 +14,8 @@ Content-Type: application/json
 
 {
 	"email": "customer1@test.com",
-	"password": "costomer123",
-	"password_confirmation": "costomer123"
+	"password": "customer123",
+	"password_confirmation": "customer123"
 }
 
 ### Sing in
@@ -23,20 +23,20 @@ POST http://127.0.0.1:3000/auth/sign_in HTTP/1.1
 Content-Type: application/json
 
 {
-  	"email": "admin123@test.com",
-  	"password": "1e1b727d8b62bb75"
-	//"email": "customer1@test.com",
-	//"password": "costomer123"
+  	//"email": "admin123@test.com",
+  	//"password": "1e1b727d8b62bb75"
+	"email": "customer1@test.com",
+	"password": "costomer123"
 }
 
 ### Sing out
 DELETE http://127.0.0.1:3000/auth/sign_out HTTP/1.1
-Content-Type: application/json; charset=utf-8
-access-token: AO2ySkxnuHubmKzzGsIs3A
+access-token: 1FdWuQbZ--1oo8kLKwaYoA
 token-type: Bearer
-client: WdH0C4Kq8InR1tc-V9he_Q
-expiry: 1546531179
-uid: admin123@test.com
+client: -YKa9_ert3a1dmPYKNl35A
+expiry: 1546623517
+uid: customer1@test.com
+Content-Type: application/json; charset=utf-8
 
 ### ADMIN CONTROLLER ###
 
@@ -83,18 +83,18 @@ uid: admin123@test.com
 }
 
 ### Delete user
-DELETE http://127.0.0.1:3000/api/v1/admin_destroy_acount/ HTTP/1.1
+DELETE http://127.0.0.1:3000/api/v1/admin_destroy_acount/0 HTTP/1.1
 
 ### PRODUCTS ###
 
 ### Show all products
 GET http://127.0.0.1:3000/api/v1/products HTTP/1.1
 Content-Type: application/json; charset=utf-8
-access-token: iNDCjSW0Tv1xz-yxpMUShg
+access-token: NHdAL--qKudBjIObCyoktg
 token-type: Bearer
-client: 7wQkb1Zy4KUvUV0omiJtOw
-expiry: 1545145614
-uid: customer1@test.com
+client: IheMW5soBbzOlYHBY9_DAQ
+expiry: 1546603262
+uid: admin123@test.com
 
 ### Show one products
 GET http://127.0.0.1:3000/api/v1/products/5 HTTP/1.1
@@ -107,12 +107,12 @@ uid: customer1@test.com
 
 ### Add product
 POST http://127.0.0.1:3000/api/v1/products HTTP/1.1
-Content-Type: application/json; charset=utf-8
-access-token: iNDCjSW0Tv1xz-yxpMUShg
+access-token: 1FdWuQbZ--1oo8kLKwaYoA
 token-type: Bearer
-client: 7wQkb1Zy4KUvUV0omiJtOw
-expiry: 1545145614
+client: -YKa9_ert3a1dmPYKNl35A
+expiry: 1546623517
 uid: customer1@test.com
+Content-Type: application/json; charset=utf-8
 
 {
 	"name": "qwer",
@@ -147,12 +147,12 @@ uid: customer1@test.com
 
 ### Show all applications
 GET http://127.0.0.1:3000/api/v1/applications HTTP/1.1
-Content-Type: application/json; charset=utf-8
-access-token: mkLNjRNaSJ7yDfCVSVBHQQ
+access-token: 1FdWuQbZ--1oo8kLKwaYoA
 token-type: Bearer
-client: HlQeSB4s1x-y_d-kcWj-ag
-expiry: 1546514394
+client: -YKa9_ert3a1dmPYKNl35A
+expiry: 1546623517
 uid: customer1@test.com
+Content-Type: application/json; charset=utf-8
 
 ### Show one applications
 GET http://127.0.0.1:3000/api/v1/applications/1 HTTP/1.1
@@ -165,29 +165,29 @@ uid: customer1@test.com
 
 ### Add applications
 POST http://127.0.0.1:3000/api/v1/applications HTTP/1.1
-Content-Type: application/json; charset=utf-8
-access-token: mkLNjRNaSJ7yDfCVSVBHQQ
+access-token: 1FdWuQbZ--1oo8kLKwaYoA
 token-type: Bearer
-client: HlQeSB4s1x-y_d-kcWj-ag
-expiry: 1546514394
+client: -YKa9_ert3a1dmPYKNl35A
+expiry: 1546623517
 uid: customer1@test.com
+Content-Type: application/json; charset=utf-8
 
 {
-	"product_id": "1",
+	"product_id": "6",
 	"title": "test 1",
-	"keyword": "test test 3"
+	"keywords": "test test 3"
 }
 
 ### Update applications
-PUT http://127.0.0.1:3000/api/v1/applications/6 HTTP/1.1
-Content-Type: application/json; charset=utf-8
-access-token: mkLNjRNaSJ7yDfCVSVBHQQ
+PUT http://127.0.0.1:3000/api/v1/applications/3 HTTP/1.1
+access-token: 1FdWuQbZ--1oo8kLKwaYoA
 token-type: Bearer
-client: HlQeSB4s1x-y_d-kcWj-ag
-expiry: 1546514394
+client: -YKa9_ert3a1dmPYKNl35A
+expiry: 1546623517
 uid: customer1@test.com
+Content-Type: application/json; charset=utf-8
 
 {
 	"title": "new test 2",
-	"keyword": "new test test 2"
+	"keywords": "new test test 2"
 }
