@@ -1,4 +1,5 @@
 class Api::V1::AdminsController < ApplicationController
+  include UserAccessChecker
   before_action :auth_user_as_admin
 
   def index

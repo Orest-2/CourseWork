@@ -3,7 +3,7 @@ module UserAccessChecker
 
   included do
     before_action :authenticate_user!, only:
-    %i[
+        %i[
       auth_user_as_admin
       auth_user_as_executor
       auth_user_as_customer
@@ -28,21 +28,21 @@ module UserAccessChecker
 
   def customer?
     !current_user.is_admin? &&
-      !current_user.is_executor? &&
-      !current_user.is_secretary?
+        !current_user.is_executor? &&
+        !current_user.is_secretary?
   end
 
   def not_access(role)
     render json: {
-      success: false,
-      msg: "Login as #{role}"
+        success: false,
+        msg: "Login as #{role}"
     }
   end
 
   def not_sing_in(role)
     render json: {
-      success: false,
-      msg: "Please sing in as #{role}"
+        success: false,
+        msg: "Please sing in as #{role}"
     }
   end
 end

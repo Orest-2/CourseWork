@@ -1,10 +1,19 @@
 class Api::V1::ApplicationsController < ApplicationController
   before_action :auth_user_as_customer, only:
                 %i[index create update show destory]
+  before_action :authenticate_user!, only:
+                %i[index]
 
+  api :GET, '/v1/applications'
   def index
+    applications = []
+    if current_user.is_admin
+      applications = CopyrightApplication.all
+    else
+      applications = CopyrightApplication.where(customer_id: current_user.id)
+    end
     render json: {
-      applications: CopyrightApplication.where(customer_id: current_user.id)
+      applications: applications
     }
   end
 

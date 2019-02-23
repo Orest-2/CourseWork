@@ -13,7 +13,7 @@ POST http://127.0.0.1:3000/auth HTTP/1.1
 Content-Type: application/json
 
 {
-	"email": "customer1@test.com",
+	"email": "customer2@test.com",
 	"password": "customer123",
 	"password_confirmation": "customer123"
 }
@@ -25,8 +25,8 @@ Content-Type: application/json
 {
   	//"email": "admin123@test.com",
   	//"password": "1e1b727d8b62bb75"
-	"email": "customer1@test.com",
-	"password": "costomer123"
+	"email": "customer2@test.com",
+	"password": "customer123"
 }
 
 ### Sing out
@@ -107,10 +107,11 @@ uid: customer1@test.com
 
 ### Add product
 POST http://127.0.0.1:3000/api/v1/products HTTP/1.1
-access-token: 1FdWuQbZ--1oo8kLKwaYoA
+Content-Type: application/json; charset=utf-8
+access-token: 5Bf7iGBOVUPgvEpfHN7raQ
 token-type: Bearer
-client: -YKa9_ert3a1dmPYKNl35A
-expiry: 1546623517
+client: YdTIR2X2lvgiCZx4PR79ng
+expiry: 1552127521
 uid: customer1@test.com
 Content-Type: application/json; charset=utf-8
 
@@ -147,12 +148,12 @@ uid: customer1@test.com
 
 ### Show all applications
 GET http://127.0.0.1:3000/api/v1/applications HTTP/1.1
-access-token: 1FdWuQbZ--1oo8kLKwaYoA
-token-type: Bearer
-client: -YKa9_ert3a1dmPYKNl35A
-expiry: 1546623517
-uid: customer1@test.com
 Content-Type: application/json; charset=utf-8
+access-token: P0Ueg7CfSxg3X7pchXkNcw
+token-type: Bearer
+client: WUDnNSgaMxekJ8y7ZjRiCw
+expiry: 1552128013
+uid: customer2@test.com
 
 ### Show one applications
 GET http://127.0.0.1:3000/api/v1/applications/1 HTTP/1.1
@@ -165,15 +166,16 @@ uid: customer1@test.com
 
 ### Add applications
 POST http://127.0.0.1:3000/api/v1/applications HTTP/1.1
-access-token: 1FdWuQbZ--1oo8kLKwaYoA
+Content-Type: application/json; charset=utf-8
+access-token: 5Bf7iGBOVUPgvEpfHN7raQ
 token-type: Bearer
-client: -YKa9_ert3a1dmPYKNl35A
-expiry: 1546623517
+client: YdTIR2X2lvgiCZx4PR79ng
+expiry: 1552127521
 uid: customer1@test.com
 Content-Type: application/json; charset=utf-8
 
 {
-	"product_id": "6",
+	"product_id": "2",
 	"title": "test 1",
 	"keywords": "test test 3"
 }
@@ -191,3 +193,8 @@ Content-Type: application/json; charset=utf-8
 	"title": "new test 2",
 	"keywords": "new test test 2"
 }
+
+### API Documentation
+GET http://127.0.0.1:3000/apipie HTTP/1.1
+
+###
