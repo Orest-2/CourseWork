@@ -15,7 +15,7 @@ class Api::V1::ProductsController < ApplicationController
     if @prod.save
       index
     else
-      render_error
+      render_class_error(@prod)
     end
   end
 
@@ -27,7 +27,7 @@ class Api::V1::ProductsController < ApplicationController
     if @prod.update(prod_param)
       index
     else
-      render_error
+      render_class_error(@prod)
     end
   end
 
@@ -42,17 +42,7 @@ class Api::V1::ProductsController < ApplicationController
     @prod = current_user.products.find(params[:id])
   rescue ActiveRecord::RecordNotFound => e
     @error = e.message
-    render_error
-  end
-
-  def render_error
-    msg = @prod.errors.full_messages unless @prod.nil?
-    msg ||= [@error.split('[').first]
-
-    render json: {
-      success: false,
-      msg: msg
-    }
+    render_class_error(@prod, @error)
   end
 
   def prod_param

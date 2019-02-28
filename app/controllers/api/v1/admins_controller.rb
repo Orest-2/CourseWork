@@ -15,7 +15,8 @@ class Api::V1::AdminsController < ApplicationController
     if user.errors.blank?
       render json: user
     else
-      render json: user.errors.full_messages
+      @error = user.errors.full_messages
+      render_error(@error)
     end
   end
 
@@ -23,9 +24,10 @@ class Api::V1::AdminsController < ApplicationController
     user = User.find(params[:id])
     user.destroy if user.belong_to == current_user.id
 
-    render json: { msg: 'Secsses' }
+    render json: { msg: 'Success' }
   rescue ActiveRecord::RecordNotFound => exception
-    render json: { msg: exception }
+    @error = exception
+    render_error(@error)
   end
 
   private

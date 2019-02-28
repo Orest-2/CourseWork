@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::ApplicationsController < ApplicationController
   before_action :auth_user_as_customer, only:
                 %i[index create update show destory]
@@ -6,12 +8,11 @@ class Api::V1::ApplicationsController < ApplicationController
 
   api :GET, '/v1/applications'
   def index
-    applications = []
-    if current_user.is_admin
-      applications = CopyrightApplication.all
-    else
-      applications = CopyrightApplication.where(customer_id: current_user.id)
-    end
+    applications = if current_user.is_admin
+                     CopyrightApplication.all
+                   else
+                     CopyrightApplication.where(customer_id: current_user.id)
+                   end
     render json: {
       applications: applications
     }
@@ -26,8 +27,8 @@ class Api::V1::ApplicationsController < ApplicationController
     if application.save
       index
     else
-      @errors = application.errors.full_messages
-      render_error
+      @error = application.errors.full_messages
+      render_error(@error)
     end
   end
 
@@ -42,8 +43,8 @@ class Api::V1::ApplicationsController < ApplicationController
     if application.update(application_params)
       index
     else
-      @errors = application.errors.full_messages
-      render_error
+      @error = application.errors.full_messages
+      render_error(@error)
     end
   end
 
@@ -58,8 +59,8 @@ class Api::V1::ApplicationsController < ApplicationController
   def application_find
     CopyrightApplication.find(params[:id])
   rescue ActiveRecord::RecordNotFound => e
-    @errors = e.message
-    render_error
+    @error = e.message
+    render_error(@error)
     false
   end
 
@@ -67,19 +68,9 @@ class Api::V1::ApplicationsController < ApplicationController
     current_user.products.find(params[:product_id])
     true
   rescue ActiveRecord::RecordNotFound => e
-    @errors = e.message
-    render_error
+    @error = e.message
+    render_error(@error)
     false
-  end
-
-  def render_error
-    msg = [@errors.split('[').first]
-    msg ||= @errors
-
-    render json: {
-      success: false,
-      msg: msg
-    }
   end
 
   def application_params
