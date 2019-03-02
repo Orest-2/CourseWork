@@ -8,10 +8,15 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins 'open-copyright-platform2.herokuapp.com',
-            'localhost:3000', '127.0.0.1:3000'
+            'ocp.zzz.com.ua',
+            'localhost:3000',
+            '127.0.0.1:3000',
+            'localhost:4200',
+            '127.0.0.1:4200'
 
     resource '*',
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+             headers: :any,
+             expose: %w[access-token expiry token-type uid client],
+             methods: %i[get post options delete put]
   end
 end
