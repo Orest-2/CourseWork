@@ -10,17 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_21_175750) do
+ActiveRecord::Schema.define(version: 2019_03_25_090608) do
+
+  create_table "copyright_application_tasks", force: :cascade do |t|
+    t.integer "copyright_application_id", null: false
+    t.string "title", null: false
+    t.boolean "done", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "copyright_applications", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "customer_id", null: false
+    t.integer "director_id"
     t.integer "acceptor_id"
     t.integer "executor_id"
-    t.integer "product_id"
-    t.string "title"
-    t.string "keywords"
-    t.string "status", default: "created"
-    t.boolean "is_paid", default: false
+    t.string "title", null: false
+    t.string "description"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +36,17 @@ ActiveRecord::Schema.define(version: 2018_12_21_175750) do
     t.integer "user_id"
     t.string "name"
     t.string "description"
+    t.integer "product_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_params", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

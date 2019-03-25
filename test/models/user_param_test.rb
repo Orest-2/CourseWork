@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V1::SuperAdminControllerTest < ActionDispatch::IntegrationTest
+class UserParamTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
