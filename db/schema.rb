@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_090608) do
+ActiveRecord::Schema.define(version: 2019_05_13_110639) do
 
   create_table "copyright_application_tasks", force: :cascade do |t|
     t.integer "copyright_application_id", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_090608) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "product_id"
   end
 
   create_table "products", force: :cascade do |t|

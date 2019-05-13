@@ -43,7 +43,7 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
 
     return unless application
 
-    params[:copyright_application].delete :product_id
+    #params[:copyright_application].delete :product_id
     params[:copyright_application].delete :customer_id
     if application.update(application_params)
       application = application_find
