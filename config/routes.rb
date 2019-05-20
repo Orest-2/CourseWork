@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   apipie
   mount_devise_token_auth_for 'User', at: 'auth'
-
   namespace :api do
     namespace :v1 do
       post 'admin/directors', to: 'admins#create'
-
       get 'user/params', to: 'user_params#show'
       post 'user/params', to: 'user_params#create'
       put 'user/params', to: 'user_params#update'
