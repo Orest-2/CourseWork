@@ -22,7 +22,7 @@ module UserAccessChecker
       return if role == 'executor' && current_user.is_executor?
       return if role == 'secretary' && current_user.is_secretary?
       return if role == 'customer' && customer?
-      return if role == 'admin_or_customer' && customer? || current_user.is_admin?
+      return if role == 'admin_or_customer' && customer? || current_user.is_admin? || current_user.is_secretary? || current_user.is_executor?
       return if role == 'admin_or_secretary' && current_user.is_secretary? || current_user.is_admin?
 
       not_access(role)

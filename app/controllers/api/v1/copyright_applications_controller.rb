@@ -10,7 +10,7 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
 
   def index
     applications = if current_user.is_admin
-                     CopyrightApplication.all.to_a
+                     CopyrightApplication.where("status >= '10'").to_a
                    else
                      id = current_user.id
                      CopyrightApplication.where(customer_id: id).to_a
