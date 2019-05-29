@@ -174,7 +174,12 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
     true
   rescue StandardError => e
     @error = e.message
-    render_error(@error)
+
+    render status: 401, json: {
+      success: false,
+      msg: @error
+    }
+    
     false
   end
 
