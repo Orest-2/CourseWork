@@ -12,7 +12,7 @@ module UserAccessChecker
     ]
   end
 
-  %w[admin executor customer secretary admin_or_customer].each do |role|
+  %w[admin executor customer secretary admin_or_customer admin_or_secretary].each do |role|
     define_method("auth_user_as_#{role}") do
       if current_user.nil?
         not_sing_in(role)
@@ -23,6 +23,7 @@ module UserAccessChecker
       return if role == 'secretary' && current_user.is_secretary?
       return if role == 'customer' && customer?
       return if role == 'admin_or_customer' && customer? || current_user.is_admin?
+      return if role == 'admin_or_secretary' && current_user.is_secretary? || current_user.is_admin?
 
       not_access(role)
     end

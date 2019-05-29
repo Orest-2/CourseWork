@@ -2,9 +2,11 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
   before_action :auth_user_as_customer, only:
   %i[create update show destroy]
   before_action :auth_user_as_admin_or_customer, only:
-  %i[index]
+  %i[index submit unsubmit]
   before_action :application_find, only:
   %i[destroy submit unsubmit]
+  before_action :auth_user_as_admin_or_secretary, only:
+  %i[accept_copyright_applications decline_copyright_applications]
 
   def index
     applications = if current_user.is_admin
@@ -89,6 +91,50 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
       success: true,
       copyright_application: @application
     }
+  end
+
+  def accept_copyright_applications
+    application = CopyrightApplication.find(params[:id])
+
+    if(current_user.is_admin != 1)
+      application.director_id = current_user.belong_to
+    else
+      application.director_id = current_user.id
+    end
+    application.acceptor_id = current_user.id
+    application.status = 20
+
+    if application.save
+      render status: 200, json: {
+        success: true,
+        copyright_application: application
+      }
+    else
+      @error = application.errors.full_messages
+      render_error(400, nil, @error)
+    end
+  end
+
+  def decline_copyright_applications
+    application = CopyrightApplication.find(params[:id])
+
+    if(current_user.is_admin != 1)
+      application.director_id = current_user.belong_to
+    else
+      application.director_id = current_user.id
+    end
+    application.acceptor_id = current_user.id
+    application.status = 10
+
+    if application.save
+      render status: 200, json: {
+        success: true,
+        copyright_application: application
+      }
+    else
+      @error = application.errors.full_messages
+      render_error(400, nil, @error)
+    end
   end
 
   private
