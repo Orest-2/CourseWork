@@ -4,9 +4,9 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
   before_action :auth_user_as_admin_or_customer, only:
   %i[index submit unsubmit]
   before_action :application_find, only:
-  %i[destroy submit unsubmit]
+  %i[destroy submit unsubmit sharing done]
   before_action :auth_user_as_admin_or_secretary, only:
-  %i[accept_copyright_applications decline_copyright_applications]
+  %i[accept_copyright_applications decline_copyright_applications sharing done]
 
   def index
     applications = if current_user.is_admin
@@ -87,6 +87,23 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
 
   def unsubmit
     change_status(0)
+    render status: 200, json: {
+      success: true,
+      copyright_application: @application
+    }
+  end
+
+  def sharing
+    change_status(30)
+    @application.executor_id = params[:product_id] 
+    render status: 200, json: {
+      success: true,
+      copyright_application: @application
+    }
+  end
+
+  def done
+    change_status(40)
     render status: 200, json: {
       success: true,
       copyright_application: @application
