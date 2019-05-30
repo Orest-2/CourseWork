@@ -98,7 +98,8 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
 
   def sharing
     change_status(30)
-    @application.executor_id = params[:executor_id] 
+    @application.executor_id = params[:executor_id]
+    @application.save
     render status: 200, json: {
       success: true,
       copyright_application: @application
