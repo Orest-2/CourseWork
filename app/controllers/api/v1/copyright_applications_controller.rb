@@ -90,8 +90,6 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
 
   def unsubmit
     change_status(0)
-    @application.executor_id = nil
-    @application.save
     render status: 200, json: {
       success: true,
       copyright_application: @application
@@ -140,6 +138,8 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
 
   def decline_copyright_applications
     application = CopyrightApplication.find(params[:id])
+    application.executor_id = nil
+    application.save
 
     if(current_user.is_admin != 1)
       application.director_id = current_user.belong_to
