@@ -9,8 +9,11 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
   %i[accept_copyright_applications decline_copyright_applications sharing done]
 
   def index
-    applications = if current_user.is_admin
+    applications = if current_user.is_admin || current_user.is_secretary
                      CopyrightApplication.where("status >= '10'").to_a
+                   elsif current_user.is_executor
+                     id = current_user.id
+                     CopyrightApplication..where(executor_id: id).to_a
                    else
                      id = current_user.id
                      CopyrightApplication.where(customer_id: id).to_a
