@@ -90,6 +90,8 @@ class Api::V1::CopyrightApplicationsController < ApplicationController
 
   def unsubmit
     change_status(0)
+    @application.executor_id = nil
+    @application.save
     render status: 200, json: {
       success: true,
       copyright_application: @application
