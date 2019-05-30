@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       get 'copyright_applications/unsubmit/:id', to: 'copyright_applications#unsubmit'
       get 'copyright_applications/accept/:id', to: 'copyright_applications#accept_copyright_applications'
       get 'copyright_applications/decline/:id', to: 'copyright_applications#decline_copyright_applications'
+
+      get 'product/custom_search', to: 'custom_search#search'
     end
   end
 end
