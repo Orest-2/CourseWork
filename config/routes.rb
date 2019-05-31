@@ -27,7 +27,7 @@ Rails.application.routes.draw do
       post 'copyright_applications/share', to: 'copyright_applications#sharing'
       get 'copyright_applications/done/:id', to: 'copyright_applications#done'
 
-      post 'product/custom_search', to: 'custom_search#search'
+      post 'copyright_applications/custom_search', to: 'custom_search#search'
     end
   end
 end
