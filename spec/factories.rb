@@ -14,5 +14,13 @@ FactoryBot.define do
       email {"test@gmail.com"}
       address {"Ungvar s. Radvanka 5"}
     end
+
+    factory :secretary, class: User do
+      email {"testing123@gmail.com"}
+      password {"pass_123"}
+      is_admin  {false}
+      is_executor  {false}
+      is_secretary {true}
+    end
   
   end

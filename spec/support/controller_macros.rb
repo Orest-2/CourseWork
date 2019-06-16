@@ -36,6 +36,11 @@ module ControllerMacros
     post '/auth/sign_in', params:  { email: user.email, password: user.password}.to_json,
                     headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
   end 
+  
+  def reg(user)
+    post '/auth', params:  { email: user.email, password: user.password }.to_json,
+                    headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+  end
 
   def sign_up(user)
 
