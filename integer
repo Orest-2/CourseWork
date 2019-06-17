@@ -1,0 +1,6 @@
+      invoke  active_record
+      create    db/migrate/20190316163532_create_copyright_applications.rb
+      create    app/models/copyright_application.rb
+      invoke    test_unit
+      create      test/models/copyright_application_test.rb
+      create      test/fixtures/copyright_applications.yml
